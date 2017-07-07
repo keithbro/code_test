@@ -47,8 +47,8 @@ module.exports = {
 
   getRule: (rules, week) => {
     const isRuleApplicable = (rule) => {
-      return rule.lastApplicableWeek === undefined ||
-        week <= rule.lastApplicableWeek;
+      return rule.applicableWeeks.last === undefined ||
+        week <= rule.applicableWeeks.last;
     }
     return R.find(isRuleApplicable, rules)
   },
