@@ -4,7 +4,7 @@ const assert = require('assert')
 const moment = require('moment')
 const Big = require('Big.js')
 
-const { parsePeopleJSON, dateFormat } = require('../calculator');
+const { parsePeopleJSON, dateFormat } = require('../lib/calculator');
 
 parsePeopleJSON('./test/data/people.json').then((people) => {
   describe('parsePeopleJSON', () => {

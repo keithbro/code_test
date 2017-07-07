@@ -4,7 +4,7 @@ const assert = require('assert')
 const R = require('ramda')
 
 const { getCompensation, parsePeopleJSON, parseRulesJSON } =
-  require('../calculator')
+  require('../lib/calculator')
 
 const calculateCompensation = (acc, combination) => {
   const [ person, rule ] = combination

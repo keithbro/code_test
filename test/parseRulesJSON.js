@@ -3,7 +3,7 @@
 const assert = require('assert')
 const moment = require('moment')
 
-const { parseRulesJSON, dateFormat } = require('../calculator');
+const { parseRulesJSON, dateFormat } = require('../lib/calculator');
 
 parseRulesJSON('./test/data/rules.json').then((rules) => {
   describe('parseRulesJSON', () => {

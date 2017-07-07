@@ -3,7 +3,7 @@
 const assert = require('assert')
 const moment = require('moment')
 
-const calculator = require('../calculator')
+const calculator = require('../lib/calculator')
 
 const format = 'YYYY/MM/DD'
 const injuryDate = moment('2016/12/24', format)

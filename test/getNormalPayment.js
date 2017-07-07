@@ -2,7 +2,7 @@
 
 const assert = require('assert')
 const R = require('ramda')
-const { parsePeopleJSON, getNormalPayment } = require('../calculator')
+const { parsePeopleJSON, getNormalPayment } = require('../lib/calculator')
 
 const expectedNormalPayments = [
   { name: "Ebony Boycott", normalPayment: "2625.105" },

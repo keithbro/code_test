@@ -2,7 +2,7 @@
 
 const assert = require('assert')
 
-const { parseRulesJSON, getRule } = require('../calculator')
+const { parseRulesJSON, getRule } = require('../lib/calculator')
 
 parseRulesJSON('./test/data/rules.json')
   .then((rules) => {
