@@ -34,7 +34,7 @@ You'll need Node installed. I used v8.1.2.
   and if they are not you would probably get an ugly error message.
 * Possibly split out calculator.js in to multiple modules, one focused on
   rules, and another focused on people. Might even be worth turning them in to
-  proper classes, but I went for a very functional approach instead.
+  proper classes, but I went for a more functional approach instead.
 * Move the "scripts" in to their own module so that they can be unit tested.
 
 
