@@ -30,7 +30,7 @@ You'll need Node installed. I used v8.1.2.
 
 ## Given more time I would...
 
-* Validate my inputs! Currently the JSON files must be in the correct format
+* Better input validation! Currently the JSON files must be in the correct format
   and if they are not you would probably get an ugly error message.
 * Possibly split out calculator.js in to multiple modules, one focused on
   rules, and another focused on people. Might even be worth turning them in to
