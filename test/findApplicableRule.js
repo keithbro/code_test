@@ -21,9 +21,12 @@ parseRulesJSON('./test/data/rules.json')
     ];
 
     describe('findApplicableRule', () => {
-      it('should return the correct rule', () => {
-        testCases.forEach((testCase) => {
-          assert.equal(findApplicableRule(rules, testCase.week), testCase.rule)
+      testCases.forEach((testCase) => {
+        it(`should return the correct rule for weekNumber ${testCase.week}`, () => {
+          assert.strictEqual(
+            findApplicableRule(rules, testCase.week),
+            testCase.rule
+          )
         })
       })
     })

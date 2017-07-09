@@ -7,26 +7,21 @@ const {
   parsePeopleJSON,
 } = require('../lib/calculator')
 
-const expectedOvertimePayments = [
-  { name: "Ebony Boycott", overtimePayment: "1095" },
-  { name: "Geoff Rainford-Brent", overtimePayment: "645.69792" },
-  { name: "Meg Gillespie", overtimePayment: "0" },
-  { name: "Jason Lanning", overtimePayment: "1128.24624" },
-]
-
-const calculateOvertimePayment = (person) => {
-  return {
-    name: person.name,
-    overtimePayment: calculateOvertimePay(person).toString(),
-  }
+const expectedOvertimePayForPerson = {
+  "Ebony Boycott": "1095",
+  "Geoff Rainford-Brent": "645.69792",
+  "Meg Gillespie": "0",
+  "Jason Lanning": "1128.24624",
 }
 
 parsePeopleJSON('./test/data/people.json')
-  .then(R.map(calculateOvertimePayment))
-  .then((overtimePayments) => {
+  .then((people) => {
     describe('calculateOvertimePay', () => {
-      it('should...', () => {
-        assert.deepStrictEqual(overtimePayments, expectedOvertimePayments)
+      people.forEach((person) => {
+        it(`should calculate the correct pay for ${person.name}`, () => {
+          const overtimePay = calculateOvertimePay(person).toString()
+          assert.strictEqual(overtimePay, expectedOvertimePayForPerson[person.name])
+        })
       })
     })
   })

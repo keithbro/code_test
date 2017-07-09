@@ -59,7 +59,7 @@ Promise.all(
   .then(R.reduce(transformCompensation, { }))
   .then((compensations) => {
     describe('calculateCompensation', () => {
-      it('should...', () => {
+      it('should calculate the correct compensation for each rule and person combination', () => {
         assert.deepStrictEqual(compensations, expectedCompensations)
       })
     })

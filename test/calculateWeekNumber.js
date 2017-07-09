@@ -20,10 +20,13 @@ const testCases = [
 ];
 
 describe('calculateWeekNumber', () => {
-  it('should return the correct week', () => {
-    testCases.forEach((testCase) => {
+  testCases.forEach((testCase) => {
+    it(`should return the correct weekNumber for ${testCase.date}`, () => {
       const date = moment(testCase.date, dateFormat)
-      assert.equal(calculateWeekNumber(injuryDate, date), testCase.expectedWeek)
+      assert.strictEqual(
+        calculateWeekNumber(injuryDate, date),
+        testCase.expectedWeek
+      )
     })
   })
 

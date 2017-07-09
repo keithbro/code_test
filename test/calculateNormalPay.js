@@ -7,26 +7,21 @@ const {
   parsePeopleJSON,
 } = require('../lib/calculator')
 
-const expectedNormalPayments = [
-  { name: "Ebony Boycott", normalPayment: "2625.105" },
-  { name: "Geoff Rainford-Brent", normalPayment: "753.085" },
-  { name: "Meg Gillespie", normalPayment: "1875" },
-  { name: "Jason Lanning", normalPayment: "1600.22" },
-]
-
-const calculateNormalPayment = (person) => {
-  return {
-    name: person.name,
-    normalPayment: calculateNormalPay(person).toString(),
-  }
+const expectedNormalPayForPerson = {
+  "Ebony Boycott": "2625.105",
+  "Geoff Rainford-Brent": "753.085",
+  "Meg Gillespie": "1875",
+  "Jason Lanning": "1600.22",
 }
 
 parsePeopleJSON('./test/data/people.json')
-  .then(R.map(calculateNormalPayment))
-  .then((normalPayments) => {
+  .then((people) => {
     describe('calculateNormalPay', () => {
-      it('should...', () => {
-        assert.deepStrictEqual(normalPayments, expectedNormalPayments)
+      people.forEach((person) => {
+        it(`should calculate the correct pay for ${person.name}`, () => {
+          const normalPay = calculateNormalPay(person).toString()
+          assert.strictEqual(normalPay, expectedNormalPayForPerson[person.name])
+        })
       })
     })
   })
