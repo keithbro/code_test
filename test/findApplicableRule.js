@@ -2,7 +2,10 @@
 
 const assert = require('assert')
 
-const { parseRulesJSON, getRule } = require('../lib/calculator')
+const {
+  findApplicableRule,
+  parseRulesJSON,
+} = require('../lib/calculator')
 
 parseRulesJSON('./test/data/rules.json')
   .then((rules) => {
@@ -17,10 +20,10 @@ parseRulesJSON('./test/data/rules.json')
       { week: 1040, rule: rules[4] },
     ];
 
-    describe('getRule', () => {
+    describe('findApplicableRule', () => {
       it('should return the correct rule', () => {
         testCases.forEach((testCase) => {
-          assert.equal(getRule(rules, testCase.week), testCase.rule)
+          assert.equal(findApplicableRule(rules, testCase.week), testCase.rule)
         })
       })
     })

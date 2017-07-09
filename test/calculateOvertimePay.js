@@ -2,7 +2,10 @@
 
 const assert = require('assert')
 const R = require('ramda')
-const { getOvertimePayment, parsePeopleJSON } = require('../lib/calculator')
+const {
+  calculateOvertimePay,
+  parsePeopleJSON,
+} = require('../lib/calculator')
 
 const expectedOvertimePayments = [
   { name: "Ebony Boycott", overtimePayment: "1095" },
@@ -14,14 +17,14 @@ const expectedOvertimePayments = [
 const calculateOvertimePayment = (person) => {
   return {
     name: person.name,
-    overtimePayment: getOvertimePayment(person).toString(),
+    overtimePayment: calculateOvertimePay(person).toString(),
   }
 }
 
 parsePeopleJSON('./test/data/people.json')
   .then(R.map(calculateOvertimePayment))
   .then((overtimePayments) => {
-    describe('getOvertimePayment', () => {
+    describe('calculateOvertimePay', () => {
       it('should...', () => {
         assert.deepStrictEqual(overtimePayments, expectedOvertimePayments)
       })

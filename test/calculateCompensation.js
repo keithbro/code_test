@@ -3,14 +3,17 @@
 const assert = require('assert')
 const R = require('ramda')
 
-const { getCompensation, parsePeopleJSON, parseRulesJSON } =
-  require('../lib/calculator')
+const {
+  calculateCompensation,
+  parsePeopleJSON,
+  parseRulesJSON,
+} = require('../lib/calculator')
 
-const calculateCompensation = (acc, combination) => {
+const transformCompensation = (acc, combination) => {
   const [ person, rule ] = combination
   return R.assocPath(
     [ person.name, String(rule.applicableWeeks.first) ],
-    getCompensation(person, rule).toString(),
+    calculateCompensation(person, rule).toString(),
     acc
   )
 }
@@ -53,9 +56,9 @@ Promise.all(
   ]
 )
   .then((parsedJSON) => R.xprod(...parsedJSON))
-  .then(R.reduce(calculateCompensation, { }))
+  .then(R.reduce(transformCompensation, { }))
   .then((compensations) => {
-    describe('getCompensation', () => {
+    describe('calculateCompensation', () => {
       it('should...', () => {
         assert.deepStrictEqual(compensations, expectedCompensations)
       })

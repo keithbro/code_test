@@ -3,10 +3,12 @@
 const assert = require('assert')
 const moment = require('moment')
 
-const calculator = require('../lib/calculator')
+const {
+  calculateWeekNumber,
+  dateFormat,
+} = require('../lib/calculator')
 
-const format = 'YYYY/MM/DD'
-const injuryDate = moment('2016/12/24', format)
+const injuryDate = moment('2016/12/24', dateFormat)
 
 const testCases = [
   { date: '2016/12/24', expectedWeek: 1 },
@@ -17,17 +19,17 @@ const testCases = [
   { date: '2018/06/01', expectedWeek: 75 },
 ];
 
-describe('getWeek', () => {
+describe('calculateWeekNumber', () => {
   it('should return the correct week', () => {
     testCases.forEach((testCase) => {
-      const date = moment(testCase.date, format)
-      assert.equal(calculator.getWeek(injuryDate, date), testCase.expectedWeek)
+      const date = moment(testCase.date, dateFormat)
+      assert.equal(calculateWeekNumber(injuryDate, date), testCase.expectedWeek)
     })
   })
 
   it('should throw an exception when given a date before the injury', () => {
     assert.throws(() => {
-      calculator.getWeek(injuryDate, injuryDate.clone().subtract(1, 'days'))
+      calculator.calculateWeekNumber(injuryDate, injuryDate.clone().subtract(1, 'days'))
     })
   })
 
