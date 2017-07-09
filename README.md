@@ -37,4 +37,13 @@ You'll need Node installed. I used v8.1.2.
   proper classes, but I went for a more functional approach instead.
 * Move the "scripts" in to their own module so that they can be unit tested.
 
+## What I focussed on...
+
+* Accuracy of calculations. I used Big.js to avoid rounding errors due to
+  working with arbitrary precision decimals.
+* I felt that the mathematical nature of the problem was suited to a functional
+  approach. I focussed on writing small functions and composing them to
+  implement the desired functionality.
+* Testing. Each function is covered by a unit test.
+
 
