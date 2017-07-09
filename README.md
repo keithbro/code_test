@@ -43,7 +43,8 @@ You'll need Node installed. I used v8.1.2.
   working with arbitrary precision decimals.
 * I felt that the mathematical nature of the problem was suited to a functional
   approach. I focussed on writing small functions and composing them to
-  implement the desired functionality.
-* Testing. Each function is covered by a unit test.
-
+  implement the desired functionality. It was for these reasons that I decided
+  to use JavaScript and the Ramda functional library.
+* Testing. I decided up front which functions I wanted to write and I wrote
+  the tests before writing the implementation.
 
