@@ -1,7 +1,10 @@
 #!/usr/bin/env node
 
-const { parsePeopleJSON, parseRulesJSON, getPaymentReport, getCompensationForWeek } =
-  require('../lib/calculator')
+const {
+  calculateCompensationForDate,
+  parsePeopleJSON,
+  parseRulesJSON,
+} = require('../lib/calculator')
 
 const moment = require('moment')
 
@@ -20,7 +23,7 @@ Promise.all(
       console.log(
         date.format('YYYY/MM/DD'),
         '$',
-        getCompensationForWeek(person, date, rules).toString()
+        calculateCompensationForDate(person, date, rules).toString()
       )
     }
   })

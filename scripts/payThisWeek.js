@@ -1,7 +1,11 @@
 #!/usr/bin/env node
 
 const moment = require('moment')
-const { getCompensationForWeek, parsePeopleJSON, parseRulesJSON } = require('../lib/calculator')
+const {
+  calculateCompensationForDate,
+  parsePeopleJSON,
+  parseRulesJSON,
+} = require('../lib/calculator')
 
 Promise.all(
   [
@@ -11,7 +15,8 @@ Promise.all(
 ).then((peopleAndRules) => {
   const [ people, rules ] = peopleAndRules
   people.forEach((person) => {
-    const compensation = getCompensationForWeek(person, moment(), rules).toString()
+    const compensation =
+      calculateCompensationForDate(person, moment(), rules).toString()
     console.log(`${person.name} will get paid $${compensation} this week`)
   })
 })
